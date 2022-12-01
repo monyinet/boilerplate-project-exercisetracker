@@ -33,7 +33,7 @@ db.data ||= {
 	exercises: [],
 	log: []
 };
-const { urls } = db.data;
+const { users, exercises, log } = db.data;
 await db.write();
 
 app.post('/api/users', urlencodedParser, async (req, res, next) => {
@@ -57,9 +57,12 @@ app.post('/api/users', urlencodedParser, async (req, res, next) => {
 	} else {
 		res.json({ error: 'invalid data' });				
 	}
+});
 
+app.get('/api/users', (req, res) => {
+	res.json({ users });		
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
   console.log('Your app is listening on port ' + listener.address().port)
-})
+});
