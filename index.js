@@ -60,7 +60,7 @@ app.post('/api/users', urlencodedParser, async (req, res, next) => {
 });
 
 app.get('/api/users', (req, res) => {
-	res.json({ users });		
+	res.json([{ users }]);		
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
