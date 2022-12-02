@@ -58,7 +58,7 @@ app.post('/api/users', urlencodedParser, async (req, res, next) => {
 });
 
 app.post('/', urlencodedParser, async (req, res, next) => {
-	console.log(req.body);
+	// console.log(req.body);
 	const getId = req.body[':_id'];
 	const getUserById = users.find(({ _id }) => _id == getId);
 	const getDescription = req.body.description;
@@ -86,11 +86,35 @@ app.post('/', urlencodedParser, async (req, res, next) => {
 	}
 });
 
-app.post('/api/users/:id/exercises', urlencodedParser, async (req, res, next) => {
-	const getId = req.params.id;
+app.post('/api/users/:id/exercises', urlencodedParser, async (req, res, next) => {	
+	const getId = req.params.id;	
+	const getDescription = req.body.description;
+	const getDuration = req.body.duration;
+	const getDate = new Date(req.body.date);
+
+	function isValidDate (date) {
+		let setDate = Date.parse(date);		
+		if (!isNaN(setDate)) {
+			setDate = new Date(date).toDateString();			
+			return setDate;
+		} else {
+			setDate = new Date().toDateString();
+			return setDate;
+		}		
+	}
+
+	let setDate = isValidDate(getDate);
+	
 	try {
-		const getUserById = users.find(({ _id }) => _id == getId);	
-		res.json({getUserById});		
+		const getUserById = users.find(({ _id }) => _id == getId) || getId;
+		const { username } = getUserById;
+		res.json({
+			username,
+			_id: getId,
+			date: setDate,
+			duration: +getDuration,
+			description: getDescription
+		});		
 	} catch (error) {
 		res.json({error})
 	}
