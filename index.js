@@ -16,7 +16,7 @@ import { JSONFile } from 'lowdb/node';
 
 app.use(morgan('dev'));
 app.use(cors());
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
 const jsonParser = bodyParser.json();
 app.use(express.static('public'))
 app.get('/', (req, res) => {
@@ -39,8 +39,6 @@ await db.write();
 app.post('/api/users', urlencodedParser, async (req, res, next) => {
 	const getUserName = req.body.username;
 	const hashUserName = uid(24);
-	// console.log(getUserName);
-	// console.log(hashUserName);
 	if (getUserName.length > 0) {
 		try {
 			db.data
@@ -55,7 +53,46 @@ app.post('/api/users', urlencodedParser, async (req, res, next) => {
 			res.json({ error: 'invalid data' });		
 			}
 	} else {
-		res.json({ error: 'invalid data' });				
+		res.json({ 'error': 'invalid data' });				
+	}
+});
+
+app.post('/', urlencodedParser, async (req, res, next) => {
+	console.log(req.body);
+	const getId = req.body[':_id'];
+	const getUserById = users.find(({ _id }) => _id == getId);
+	const getDescription = req.body.description;
+	const getDuration = req.body.duration;
+	let getDateNow = new Date();	
+	const getDate = req.body.date || getDateNow.toDateString();
+	if (getUserById){
+		try {
+			const {username, _id } = getUserById;
+			db.data
+			.exercises
+			.push({
+				username,
+				'description': getDescription,
+				'duration': getDuration,
+				'date': getDate,
+				_id,
+			});
+			await db.write();
+		} catch (error) {
+			res.json({error})
+		}
+	} else {
+		res.json({'error': 'userId not found'})
+	}
+});
+
+app.post('/api/users/:id/exercises', urlencodedParser, async (req, res, next) => {
+	const getId = req.params.id;
+	try {
+		const getUserById = users.find(({ _id }) => _id == getId);	
+		res.json({getUserById});		
+	} catch (error) {
+		res.json({error})
 	}
 });
 

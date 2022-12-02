@@ -95,8 +95,68 @@
     {
       "username": "fcc_test_16699990661",
       "_id": "f11c64a9d2c4478d6ada0ad2"
+    },
+    {
+      "username": "monyi",
+      "_id": "dc7cc42709654869c3faa1af"
+    },
+    {
+      "username": "fcc_test_16700029361",
+      "_id": "50d863d1f91fbd0c61cd392b"
+    },
+    {
+      "username": "fcc_test_16700029369",
+      "_id": "0d863d1f91fbd0c61cd392b2"
+    },
+    {
+      "username": "fcc_test_16700029378",
+      "_id": "d863d1f91fbd0c61cd392b2b"
+    },
+    {
+      "username": "fcc_test_16700029383",
+      "_id": "863d1f91fbd0c61cd392b2ba"
+    },
+    {
+      "username": "fcc_test_16700029387",
+      "_id": "63d1f91fbd0c61cd392b2bae"
+    },
+    {
+      "username": "fcc_test_16700029394",
+      "_id": "3d1f91fbd0c61cd392b2baee"
+    },
+    {
+      "username": "fcc_test_16700029401",
+      "_id": "d1f91fbd0c61cd392b2baee3"
+    },
+    {
+      "username": "fcc_test_16700029408",
+      "_id": "1f91fbd0c61cd392b2baee34"
+    },
+    {
+      "username": "fcc_test_16700029415",
+      "_id": "f91fbd0c61cd392b2baee34a"
+    },
+    {
+      "username": "fcc_test_16700029422",
+      "_id": "91fbd0c61cd392b2baee34a7"
+    },
+    {
+      "username": "fcc_test_16700029429",
+      "_id": "1fbd0c61cd392b2baee34a78"
+    },
+    {
+      "username": "fcc_test_16700029436",
+      "_id": "fbd0c61cd392b2baee34a78f"
     }
   ],
-  "exercises": [],
+  "exercises": [
+    {
+      "username": "fcc_test_16700029436",
+      "description": "My first exercise",
+      "duration": "40",
+      "date": "Fri Dec 02 2022",
+      "_id": "fbd0c61cd392b2baee34a78f"
+    }
+  ],
   "log": []
 }
