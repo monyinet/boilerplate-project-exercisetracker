@@ -39,8 +39,8 @@ await db.write();
 app.post('/api/users', urlencodedParser, async (req, res, next) => {
 	const getUserName = req.body.username;
 	const hashUserName = uid(24);
-	console.log(getUserName);
-	console.log(hashUserName);
+	// console.log(getUserName);
+	// console.log(hashUserName);
 	if (getUserName.length > 0) {
 		try {
 			db.data
@@ -60,7 +60,11 @@ app.post('/api/users', urlencodedParser, async (req, res, next) => {
 });
 
 app.get('/api/users', (req, res) => {
-	res.json([{ users }]);		
+	const getAllUsers = [];
+	users.forEach(user => {
+		getAllUsers.push(user);
+	});
+	res.json(getAllUsers);	
 });
 
 const listener = app.listen(process.env.PORT || 3000, () => {
