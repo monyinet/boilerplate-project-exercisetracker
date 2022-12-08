@@ -115,6 +115,24 @@ app.post('/api/users/:id/exercises', urlencodedParser, async (req, res, next) =>
 	}
 });
 
+app.get('/api/users/:id/logs', urlencodedParser, async (req, res, next) => {	
+	const getId = req.params.id;		
+	const getUserById = users.find(({ _id }) => _id == getId) || getId;
+	
+	const { username, _id } = getUserById;
+		
+	try {		
+		res.json({
+			username,
+			count: getUserById.log.length,
+			_id: getId,			
+			log: getUserById.log
+		});		
+	} catch (error) {
+		res.json({error})
+	}
+});
+
 app.get('/api/users', (req, res) => {
 	const getAllUsers = [];
 	users.forEach(user => {
