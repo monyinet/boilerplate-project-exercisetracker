@@ -1,102 +1,15 @@
 {
   "users": [
     {
-      "username": "fcc_test_16700218274",
-      "_id": "5affd25cb34f272d18757d44"
-    },
-    {
-      "username": "fcc_test_16700218278",
-      "_id": "affd25cb34f272d18757d442"
-    },
-    {
-      "username": "fcc_test_16700218287",
-      "_id": "ffd25cb34f272d18757d442c"
-    },
-    {
-      "username": "fcc_test_16700218291",
-      "_id": "fd25cb34f272d18757d442c1"
-    },
-    {
-      "username": "fcc_test_16700218296",
-      "_id": "d25cb34f272d18757d442c1a"
-    },
-    {
-      "username": "fcc_test_16700218302",
-      "_id": "25cb34f272d18757d442c1a7"
-    },
-    {
-      "username": "fcc_test_16700218309",
-      "_id": "5cb34f272d18757d442c1a77"
-    },
-    {
-      "username": "fcc_test_16700218315",
-      "_id": "cb34f272d18757d442c1a773"
-    },
-    {
-      "username": "fcc_test_16700218322",
-      "_id": "b34f272d18757d442c1a7735"
-    },
-    {
-      "username": "fcc_test_16700218328",
-      "_id": "34f272d18757d442c1a77356"
-    },
-    {
-      "username": "fcc_test_16700218335",
-      "_id": "4f272d18757d442c1a773569"
-    },
-    {
-      "username": "fcc_test_16700218342",
-      "_id": "f272d18757d442c1a773569d"
-    },
-    {
-      "username": "fcc_test_16700221257",
-      "_id": "c9055e58630bf59f2aa8b813"
-    },
-    {
-      "username": "fcc_test_16700221260",
-      "_id": "9055e58630bf59f2aa8b813e"
-    },
-    {
-      "username": "fcc_test_16700221269",
-      "_id": "055e58630bf59f2aa8b813e8"
-    },
-    {
-      "username": "fcc_test_16700221273",
-      "_id": "55e58630bf59f2aa8b813e80"
-    },
-    {
-      "username": "fcc_test_16700221278",
-      "_id": "5e58630bf59f2aa8b813e804"
-    },
-    {
-      "username": "fcc_test_16700221285",
-      "_id": "e58630bf59f2aa8b813e804b"
-    },
-    {
-      "username": "fcc_test_16700221292",
-      "_id": "58630bf59f2aa8b813e804b2"
-    },
-    {
-      "username": "fcc_test_16700221298",
-      "_id": "8630bf59f2aa8b813e804b25"
-    },
-    {
-      "username": "fcc_test_16700221305",
-      "_id": "630bf59f2aa8b813e804b255"
-    },
-    {
-      "username": "fcc_test_16700221312",
-      "_id": "30bf59f2aa8b813e804b2554"
-    },
-    {
-      "username": "fcc_test_16700221318",
-      "_id": "0bf59f2aa8b813e804b25547"
-    },
-    {
-      "username": "fcc_test_16700221325",
-      "_id": "bf59f2aa8b813e804b255471"
+      "username": "monyi",
+      "_id": "b2e3288b442883de59b27aa0",
+      "log": [
+        {
+          "description": "My first exercise",
+          "duration": 10,
+          "date": "Thu Dec 08 2022"
+        }
+      ]
     }
-  ],
-  "exercises": [],
-  "log": []
+  ]
 }

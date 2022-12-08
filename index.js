@@ -29,11 +29,10 @@ const db = new Low(adapter);
 await db.read();
 
 db.data ||= {
-	users: [],
-	exercises: [],
-	log: []
+	users: []
 };
-const { users, exercises, log } = db.data;
+const { users } = db.data;
+
 await db.write();
 
 app.post('/api/users', urlencodedParser, async (req, res, next) => {
@@ -45,7 +44,8 @@ app.post('/api/users', urlencodedParser, async (req, res, next) => {
 				.users
 				.push({
 					username: getUserName,
-					_id: hashUserName
+					_id: hashUserName,
+					log: []
 				});
 			await db.write();		
 			res.json({ username: getUserName, _id: hashUserName });
@@ -65,32 +65,15 @@ app.post('/', urlencodedParser, async (req, res, next) => {
 	const getDuration = req.body.duration;
 	let getDateNow = new Date();	
 	const getDate = req.body.date || getDateNow.toDateString();
-	if (getUserById){
-		try {
-			const {username, _id } = getUserById;
-			db.data
-			.exercises
-			.push({
-				username,
-				'description': getDescription,
-				'duration': getDuration,
-				'date': getDate,
-				_id,
-			});
-			await db.write();
-		} catch (error) {
-			res.json({error})
-		}
-	} else {
-		res.json({'error': 'userId not found'})
-	}
+		
 });
 
 app.post('/api/users/:id/exercises', urlencodedParser, async (req, res, next) => {	
 	const getId = req.params.id;	
 	const getDescription = req.body.description;
 	const getDuration = req.body.duration;
-	const getDate = new Date(req.body.date);
+	let getDateNow = new Date();	
+	const getDate = req.body.date || getDateNow.toDateString();
 
 	function isValidDate (date) {
 		let setDate = Date.parse(date);		
@@ -104,16 +87,28 @@ app.post('/api/users/:id/exercises', urlencodedParser, async (req, res, next) =>
 	}
 
 	let setDate = isValidDate(getDate);
+		
+	const getUserById = users.find(({ _id }) => _id == getId) || getId;
 	
+	const { username, _id } = getUserById;
+		
 	try {
-		const getUserById = users.find(({ _id }) => _id == getId) || getId;
-		const { username } = getUserById;
+		
+		getUserById.log.push({
+				'description': getDescription,
+				'duration': +getDuration,
+				'date': setDate
+			});
+			
+			await db.write();
+		
 		res.json({
 			username,
-			_id: getId,
-			date: setDate,
+			description: getDescription,
 			duration: +getDuration,
-			description: getDescription
+			date: setDate,
+			_id: getId
+			// log: getUserById.log
 		});		
 	} catch (error) {
 		res.json({error})
