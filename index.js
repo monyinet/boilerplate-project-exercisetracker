@@ -93,6 +93,7 @@ app.post('/api/users/:id/exercises', urlencodedParser, async (req, res, next) =>
 	const { username, _id } = getUserById;
 		
 	try {
+		// console.log(typeof setDate, setDate);
 		
 		getUserById.log.push({
 				'description': getDescription,
@@ -118,19 +119,38 @@ app.post('/api/users/:id/exercises', urlencodedParser, async (req, res, next) =>
 app.get('/api/users/:id/logs', urlencodedParser, async (req, res, next) => {	
 	const getId = req.params.id;		
 	const getUserById = users.find(({ _id }) => _id == getId) || getId;
+	const getFrom = req.query.from;
+	const getTo = req.query.to;
+	const getLimit = req.query.limit;
+	console.log(getFrom);
 	
-	const { username, _id } = getUserById;
+	let { username, _id, log } = getUserById;
+
+	// console.log(typeof getUserById.log[0]['date']);
 		
-	try {		
-		res.json({
-			username,
-			count: getUserById.log.length,
-			_id: getId,			
-			log: getUserById.log
-		});		
-	} catch (error) {
-		res.json({error})
-	}
+	if (getLimit && getLimit <= getUserById.log.length) {
+		const tempLog = [];
+		for (let i = 0; i < getLimit; i++){
+			tempLog.push({
+				description: getUserById.log[i].description,
+				duration: getUserById.log[i].duration,
+				date: getUserById.log[i].date,
+			})
+		log = tempLog;	
+		}
+	}	
+		
+		try {			
+			res.json({
+				username,
+				count: getUserById.log.length,
+				_id: getId,			
+				log			
+				// log: getUserById.log[getLimit - 1],			
+			})	
+		} catch (error) {
+			res.json({ error });
+		}
 });
 
 app.get('/api/users', (req, res) => {
