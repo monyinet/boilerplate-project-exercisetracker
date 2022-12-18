@@ -999,6 +999,22 @@
           "date": "Wed Jan 03 1990"
         }
       ]
+    },
+    {
+      "username": "monyi",
+      "_id": "2cf89cb50ebd376cc5b9439e",
+      "log": [
+        {
+          "description": "My second exercise",
+          "duration": 10,
+          "date": "Sun Dec 11 2022"
+        },
+        {
+          "description": "My second exercise",
+          "duration": 10,
+          "date": "Sun Dec 11 2022"
+        }
+      ]
     }
   ]
 }
